@@ -1,0 +1,39 @@
+<div class="login-container">
+  <div class="login-card">
+    <h2>Iniciar Sesión</h2>
+    
+    <!-- Vinculamos el formulario reactivo y el evento submit -->
+    <form [formGroup]="formLogin" (ngSubmit)="onLogin()">
+      
+      <div class="form-group">
+        <label for="cuenta">Cuenta</label>
+        <input 
+          type="text" 
+          id="cuenta" 
+          formControlName="cuenta" 
+          placeholder="Ingresa tu cuenta" 
+        />
+        <!-- Mensaje de error dinámico opcional -->
+        <small class="error-text" *ngIf="formLogin.get('cuenta')?.invalid && formLogin.get('cuenta')?.touched">
+          La cuenta es obligatoria (mínimo 4 caracteres).
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="contrasena">Contraseña</label>
+        <input 
+          type="password" 
+          id="contrasena" 
+          formControlName="contrasena" 
+          placeholder="Ingresa tu contraseña" 
+        />
+        <!-- Mensaje de error dinámico opcional -->
+        <small class="error-text" *ngIf="formLogin.get('contrasena')?.invalid && formLogin.get('contrasena')?.touched">
+          La contraseña es obligatoria (mínimo 6 caracteres).
+        </small>
+      </div>
+
+      <button type="submit" class="btn-submit">Ingresar</button>
+    </form>
+  </div>
+</div>

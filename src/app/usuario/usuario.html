@@ -1,0 +1,40 @@
+<div class="usuario-container">
+  <h2>Gestión de Usuarios</h2>
+
+  <!-- FORMULARIO DE NUEVO USUARIO -->
+  <div class="card-formulario" style="margin-bottom: 20px; padding: 20px; background: #f9f9f9; border-radius: 8px;">
+    <h3>Agregar Nuevo Usuario</h3>
+    
+    <form [formGroup]="formUsuario" (ngSubmit)="registrarUsuario()">
+      
+      <div class="form-group" style="margin-bottom: 10px;">
+        <label for="cuenta">Cuenta: </label>
+        <input type="text" id="cuenta" formControlName="cuenta" placeholder="Ej: jperez" />
+        <small class="error-text" *ngIf="formUsuario.get('cuenta')?.invalid && formUsuario.get('cuenta')?.touched" style="color: red; display: block;">
+          La cuenta es obligatoria (mín. 3 caracteres).
+        </small>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 10px;">
+        <label for="rol">Rol: </label>
+        <input type="text" id="rol" formControlName="rol" placeholder="Ej: Administrador" />
+        <small class="error-text" *ngIf="formUsuario.get('rol')?.invalid && formUsuario.get('rol')?.touched" style="color: red; display: block;">
+          El rol es obligatorio.
+        </small>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 15px;">
+        <label for="correo">Correo: </label>
+        <input type="email" id="correo" formControlName="correo" placeholder="correo@mail.com" />
+        <small class="error-text" *ngIf="formUsuario.get('correo')?.invalid && formUsuario.get('correo')?.touched" style="color: red; display: block;">
+          Ingresa un correo válido.
+        </small>
+      </div>
+
+      <button type="submit" class="btn-submit">Guardar Usuario</button>
+    </form>
+  </div>
+  
+  <!-- Renderizado automático de la tabla existente -->
+  <app-tabla [data]="usuariosData"></app-tabla>
+</div>

@@ -1,8 +1,9 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { MenuComponent } from './vista/menu/menu.component';
 
 @Component({
-  imports: [RouterOutlet],
+  imports: [MenuComponent, RouterOutlet],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
