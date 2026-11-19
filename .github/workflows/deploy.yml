@@ -34,15 +34,15 @@ jobs:
         run: npx ng build --base-href "/FrontPreliminares/"
 
       - name: Add 404.html fallback for SPA routes
-        run:  |
-      ls -la dist dist/preliminares dist/preliminares/browser || true
-      if [ -f "dist/preliminares/browser/index.html" ]; then
-      cp dist/preliminares/browser/index.html dist/preliminares/browser/404.html
+        run: |
+          ls -la dist dist/preliminares dist/preliminares/browser || true
+          if [ -f "dist/preliminares/browser/index.html" ]; then
+            cp dist/preliminares/browser/index.html dist/preliminares/browser/404.html
           elif [ -f "dist/preliminares/index.html" ]; then
-          cp dist/preliminares/index.html dist/preliminares/404.html
+            cp dist/preliminares/index.html dist/preliminares/404.html
           else
-          echo "No se encontró index.html en dist"
-          exit 1
+            echo "No se encontró index.html en dist"
+            exit 1
           fi
 
       - name: Upload artifact
