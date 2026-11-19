@@ -24,14 +24,14 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24"
           cache: "npm"
 
       - name: Install dependencies
         run: npm ci
 
       - name: Build Angular app
-        run: npx ng build --base-href "/preliminares/"
+        run: npx ng build --base-href "/FrontPreliminares/"
 
       - name: Add 404.html fallback for SPA routes
         run: cp dist/preliminares/browser/index.html dist/preliminares/browser/404.html
